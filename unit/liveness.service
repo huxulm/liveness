@@ -1,0 +1,11 @@
+[Unit]
+Description=Liveness for service monitoring
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/liveness --conf /etc/liveness/conf.yaml
+User=root
+
+[Install]
+WantedBy=multi-user.target
