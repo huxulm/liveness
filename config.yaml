@@ -1,0 +1,50 @@
+probes:
+- name: www.amazon.cn
+  httpGet:
+    path: /
+    host: www.amazon.cn
+    scheme: https
+providers:
+- type: sms
+  key: ""
+  secret: ""
+  template: "SMS_123456789"
+  sign_name: ""
+  provider: aliyun
+  phones:
+  - 13000000000
+- type: smtp
+  host: mail.163.com
+  port: 465
+  username: xxx@163.com
+  password:
+  receivers:
+  - xyz@163.com
+  html: |
+    <html>
+      <head>
+          <style>
+              ul li {
+                color:#000;
+                list-style:none;
+                margin-bottom:1rem
+              }
+              .title {
+                font-size:1.5rem;
+                font-weight:900;
+                color:red
+              }
+              a {
+                text-decoration: none;
+              }
+          </style>
+      </head>
+      <body>
+          <h3 class="title">
+          服务存活检测异常，请及时处理：</p>
+          <ul>
+            <li>位置：<br><a href="{{.Content}}">{{.Content}}</a></li>
+            <li>错误信息:<br><a href="#">{{.Reason}}</a></li>
+          </ul>
+      </body>
+    </html>
