@@ -91,7 +91,7 @@ func (sh *Scheduler) notifyWithSms(r *ProbeResult) {
 		if r.Reporter.conf.HTTPGet != nil {
 			conf := r.Reporter.conf.HTTPGet
 			_ = conf
-			args = append(args, fmt.Sprintf("%s://%s%s \n%s", conf.Scheme, conf.Host, conf.Path, r.Msg))
+			args = append(args, fmt.Sprintf("(%s) %s://%s%s \n%s", r.Reporter.conf.Name, conf.Scheme, conf.Host, conf.Path, r.Msg))
 			args = append(args, time.Now().Format("2006-01-02 15:04:05"))
 		}
 
